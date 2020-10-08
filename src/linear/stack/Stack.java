@@ -1,4 +1,4 @@
-package Linear;
+package linear.stack;
 
 public class Stack{
 	private int size;
@@ -33,20 +33,24 @@ public class Stack{
 		}
 		System.out.println(" ");
 	}
+	
+	/*1st argument is the stack to be sorted
+	 * 2nd argument is empty stack
+	 * */
+	
 	 void sort(Stack st1, Stack st2) {
 		while(!st1.isEmplty()) {
 			int e = st1.pop();
 			if(st2.isEmplty()) {
 				st2.push(e);
-			}else if (e<st2.peek()) {
+			}else if (e<=st2.peek()) {
 				st2.push(e);
 			}else {
 				st1.push(st2.pop());
 				st1.push(e);
 
 			}
-			st1.print();
-			st2.print();
+			
 		}
 		if(st1.isEmplty()) {
 			System.out.println("sorted");

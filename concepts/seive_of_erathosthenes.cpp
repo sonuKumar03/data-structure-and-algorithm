@@ -22,7 +22,7 @@ void sieve(){
 	if(is_primes[n]==1){
 		cout<<n<<"is Prime \n";
 	}else{
-		cout<<n<<"is Not Prime \n"
+		cout<<n<<"is Not Prime \n";
 	}
 }
 int main(){

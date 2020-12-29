@@ -7,15 +7,25 @@ void even_count(int x,int y){
 }
 
 void solve(){
-	ll x,y;
+	ll x,y,count;
 	cin>>x>>y;
-	ll count =0;
-	ll small  = x>=y?y:x;
-	ll big = x>=y?x:y;
-	count = big - small;
-	for(int i=2;i<=small;i++){
-		count +=(big-small)/i;
+	ll even_1 = x/2;
+	ll even_2 = y/2;
+
+	ll odd_1,odd_2;
+
+	if(x%2==0){
+		odd_1 = x/2;
+	}else{
+		odd_1 = x/2+1;
 	}
+	if(y%2==0){
+		odd_2 = y/2;		
+	}else{
+		odd_2 = y/2+1;
+	}
+
+	count = (even_1*even_2) + (odd_1*odd_2);
 	cout<<count<<endl;
 }
 

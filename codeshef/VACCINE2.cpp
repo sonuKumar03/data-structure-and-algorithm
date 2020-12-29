@@ -9,7 +9,6 @@ void solve(){
 	cin>>n>>d;
 	vector<int> risky_patient;
 	vector<int> not_risky_patient;
-
 	for(int i =0;i<n;i++){
 		ll a;
 		cin>>a;
@@ -19,8 +18,8 @@ void solve(){
 			not_risky_patient.push_back(a);
 		}
 	}
-
-	cout<<(risky_patient.size()/d + not_risky_patient.size()/d + risky_patient.size()%d + not_risky_patient.size()%d)<<endl;
+	ll x = risky_patient.size();
+	ll y = not_risky_patient.size();
 }
 
 int main(){

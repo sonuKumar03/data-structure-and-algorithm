@@ -2,9 +2,6 @@
 using namespace std;
 typedef long long ll;
 
-void even_count(int x,int y){
-		
-}
 
 void solve(){
 	ll x,y,count;

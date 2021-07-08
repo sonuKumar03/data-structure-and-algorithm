@@ -7,7 +7,7 @@
 #include<math.h>
 using namespace std;
 typedef long long ll ;
-ifstream fin("tests");
+// ifstream cin("tests");
 int increasing(int a,int b){
   return b>a;
 }
@@ -23,60 +23,59 @@ void print(vector<ll> ar){
 }
 void solve(){
   ll n,m;
-  fin>>n>>m;
+  cin>>n>>m;
   vector<ll> jackson(n,0);
   vector<ll> johnson(m,0);
   ll jackson_votes = 0;
   ll johnson_votes = 0;
 
   for(int i =0;i<n;i++){
-    fin>>jackson[i];
+    cin>>jackson[i];
   }
   for(int i =0;i<m;i++){
-    fin>>johnson[i];
+    cin>>johnson[i];
   }
 
   sort(jackson.begin(),jackson.end(),increasing);
   sort(johnson.begin(),johnson.end(),decreasing);
 
-  for(auto u:jackson){
-    jackson_votes+=u;
+
+  for(auto a:jackson){
+    jackson_votes+=a;
   }
-  for(auto u:johnson){
-    johnson_votes+=u;
+  for(auto a:johnson){
+    johnson_votes+=a;
   }
-  int i =0;int j =0;
-  int swaps =0;
-  bool successful = false;
-  while(i<jackson.size() && j< johnson.size()){
+
+  int swap = 0;
+  int i=0;
+  int j=0;
+  bool f = false;
+  while(i <= jackson.size() && j<=jackson.size()){
     if(jackson_votes > johnson_votes){
-      successful = true;
+      f = true;
       break;
     }
-    jackson_votes-=jackson[i];
-    jackson_votes+=johnson[j];
-
-    johnson_votes-=johnson[j];
-    johnson_votes+=jackson[i];
-
-    int temp = jackson[i];
-    jackson[i] = johnson[j];
-    johnson[j] = temp;
+    // cout<<jackson_votes<<" "<<johnson_votes<<endl;
+    jackson_votes=jackson_votes-jackson[i] + johnson[j];
+    johnson_votes=johnson_votes-johnson[j]+jackson[i];
+    swap++;
     i++;
     j++;
-    swaps++;
   }
-  if(successful){
-    cout<<swaps<<endl;
+
+  if(f){
+    cout<<swap<<endl;
   }else{
     cout<<-1<<endl;
   }
+
 }
 
 int main() {
 
   ll t;
-  fin>>t;
+  cin>>t;
   while(t--){
     solve();
   }
